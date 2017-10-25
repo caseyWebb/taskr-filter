@@ -19,3 +19,5 @@ before_script:
 after_script:
 - codecov
 - greenkeeper-lockfile-upload
+notifications:
+  email: false
