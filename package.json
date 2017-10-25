@@ -1,0 +1,43 @@
+{
+  "name": "taskr-filter",
+  "version": "0.0.1",
+  "description": "Filter plugin for Taskr",
+  "license": "WTFPL",
+  "repository": "https://github.com/caseyWebb/taskr-filter",
+  "files": [
+    "index.js"
+  ],
+  "keywords": [
+    "taskr",
+    "taskr-plugin",
+    "filter"
+  ],
+  "scripts": {
+    "prepublish": "npm test",
+    "test": "nyc --reporter=lcov --reporter=html ava --verbose && rm -rf test/.tmp",
+    "test:watch": "ava --watch"
+  },
+  "author": {
+    "name": "Casey Webb",
+    "email": "notcaseywebb@gmail.com",
+    "url": "http://github.com/caseyWebb"
+  },
+  "dependencies": {
+    "lodash": "^4.17.4",
+    "multimatch": "^2.1.0"
+  },
+  "devDependencies": {
+    "@taskr/clear": "^1.1.0",
+    "ava": "^0.23.0",
+    "eslint": "^4.1.0",
+    "eslint-config-profiscience": "^2.0.0",
+    "nyc": "^11.0.3",
+    "taskr": "^1.1.0"
+  },
+  "peerDependencies": {
+    "taskr": "^1.1.0"
+  },
+  "engines": {
+    "node": ">= 6.9"
+  }
+}
