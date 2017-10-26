@@ -1,4 +1,6 @@
 # taskr-filter
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/caseyWebb/taskr-filter.svg)](https://greenkeeper.io/)
 > Filter plugin for [Taskr][]
 
 [![NPM][npm-shield]][npm]
