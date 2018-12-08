@@ -23,7 +23,7 @@
     "url": "http://github.com/caseyWebb"
   },
   "dependencies": {
-    "lodash": "^4.17.4",
+    "lodash": "^4.17.5",
     "multimatch": "^2.1.0"
   },
   "devDependencies": {
