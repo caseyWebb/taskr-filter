@@ -14,7 +14,6 @@
   ],
   "scripts": {
     "lint": "eslint --ignore-path .gitignore ./",
-    "prepublish": "npm test",
     "test": "jest",
     "posttest": "rm -rf test/.tmp",
     "release": "standard-version --sign && git push --follow-tags"
