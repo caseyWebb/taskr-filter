@@ -29,8 +29,8 @@
   },
   "devDependencies": {
     "@taskr/clear": "^1.1.0",
-    "eslint": "^4.1.0",
-    "eslint-config-profiscience": "^2.0.0",
+    "eslint": "^6.1.0",
+    "eslint-config-profiscience": "^4.0.7",
     "jest": "^24.9.0",
     "prettier": "^1.18.2",
     "standard-version": "^7.0.0",
@@ -52,6 +52,9 @@
     },
     "parserOptions": {
       "sourceType": "script"
+    },
+    "rules": {
+      "@typescript-eslint/no-var-requires": 0
     }
   },
   "jest": {
