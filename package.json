@@ -1,6 +1,6 @@
 {
   "name": "taskr-filter",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Filter plugin for Taskr",
   "license": "WTFPL",
   "repository": "https://github.com/caseyWebb/taskr-filter",
