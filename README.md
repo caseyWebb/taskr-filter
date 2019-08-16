@@ -7,7 +7,6 @@
 [![Coverage Status][codecov-shield]][codecov]
 [![Dependency Status][david-dm-shield]][david-dm]
 [![Peer Dependency Status][david-dm-peer-shield]][david-dm-peer]
-[![Greenkeeper][greenkeeper]][greenkeeper-shield]
 
 ## Install
 
@@ -80,6 +79,3 @@ export default function* (task) {
 
 [david-dm-peer]: https://david-dm.org/caseyWebb/taskr-filter#type=peer
 [david-dm-peer-shield]: https://img.shields.io/david/peer/caseyWebb/taskr-filter.svg
-
-[greenkeeper]: https://greenkeeper.io/
-[greenkeeper-shield]: https://badges.greenkeeper.io/caseyWebb/taskr-filter.svg
