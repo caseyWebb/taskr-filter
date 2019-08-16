@@ -14,13 +14,13 @@
   ],
   "scripts": {
     "prepublish": "npm test",
-    "test": "nyc --reporter=lcov --reporter=html ava --verbose && rm -rf test/.tmp",
-    "test:watch": "ava --watch"
+    "test": "jest",
+    "posttest": "rm -rf test/.tmp"
   },
   "author": {
     "name": "Casey Webb",
     "email": "notcaseywebb@gmail.com",
-    "url": "http://github.com/caseyWebb"
+    "url": "https://caseyWebb.xyz"
   },
   "dependencies": {
     "lodash": "^4.17.4",
@@ -28,10 +28,9 @@
   },
   "devDependencies": {
     "@taskr/clear": "^1.1.0",
-    "ava": "^2.2.0",
     "eslint": "^4.1.0",
     "eslint-config-profiscience": "^2.0.0",
-    "nyc": "^14.1.1",
+    "jest": "^24.9.0",
     "taskr": "^1.1.0"
   },
   "peerDependencies": {
@@ -39,5 +38,27 @@
   },
   "engines": {
     "node": ">= 8.0"
+  },
+  "eslintConfig": {
+    "extends": [
+      "eslint-config-profiscience"
+    ],
+    "env": {
+      "jest": true
+    },
+    "parserOptions": {
+      "sourceType": "script"
+    }
+  },
+  "jest": {
+    "collectCoverage": true,
+    "testMatch": [
+      "<rootDir>/test/**/*.js"
+    ]
+  },
+  "prettier": {
+    "arrowParens": "always",
+    "semi": false,
+    "singleQuote": true
   }
 }

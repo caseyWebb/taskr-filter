@@ -2,27 +2,23 @@
 
 const fs = require('fs')
 const path = require('path')
-const test = require('ava')
 const Taskr = require('taskr')
 
 const fixtures = path.resolve(__dirname, 'fixtures')
 const tmpRoot = path.resolve(__dirname, '.tmp/glob')
 
-test('taskr-filter w/ single glob', async (t) => {
+test('taskr-filter w/ single glob', async () => {
   const tmp = path.join(tmpRoot, 'single')
   const taskr = new Taskr({
-    plugins: [
-      require('../'),
-      require('@taskr/clear')
-    ],
+    plugins: [require('../'), require('@taskr/clear')],
     tasks: {
-      * filter(task) {
+      *filter(task) {
         yield task
           .source(path.join(fixtures, '*'))
           .filter(path.join(fixtures, 'ba*'))
           .target(tmp)
       },
-      * clear(task) {
+      *clear(task) {
         yield task.clear(tmp)
       }
     }
@@ -30,33 +26,28 @@ test('taskr-filter w/ single glob', async (t) => {
 
   await taskr.start('filter')
 
-  const exists = (file) => fs.existsSync(path.resolve(tmp, file))
+  const exists = (file, shouldExist = true) =>
+    expect(fs.existsSync(path.resolve(tmp, file))).toBe(shouldExist)
 
-  t.false(exists('foo'))
-  t.true(exists('bar'))
-  t.true(exists('baz'))
+  exists('foo', false)
+  exists('bar', true)
+  exists('baz', true)
 
   await taskr.start('clear')
 })
 
-test('taskr-filter w/ multiple globs', async (t) => {
+test('taskr-filter w/ multiple globs', async () => {
   const tmp = path.join(tmpRoot, 'multi')
   const taskr = new Taskr({
-    plugins: [
-      require('../'),
-      require('@taskr/clear')
-    ],
+    plugins: [require('../'), require('@taskr/clear')],
     tasks: {
-      * filter(task) {
+      *filter(task) {
         yield task
           .source(path.join(fixtures, '*'))
-          .filter([
-            '**/*',
-            '!**/foo'
-          ])
+          .filter(['**/*', '!**/foo'])
           .target(tmp)
       },
-      * clear(task) {
+      *clear(task) {
         yield task.clear(tmp)
       }
     }
@@ -64,12 +55,12 @@ test('taskr-filter w/ multiple globs', async (t) => {
 
   await taskr.start('filter')
 
-  const exists = (file) => fs.existsSync(path.resolve(tmp, file))
+  const exists = (file, shouldExist = true) =>
+    expect(fs.existsSync(path.resolve(tmp, file))).toBe(shouldExist)
 
-  t.false(exists('foo'))
-  t.true(exists('bar'))
-  t.true(exists('baz'))
+  exists('foo', false)
+  exists('bar')
+  exists('baz')
 
   await taskr.start('clear')
 })
-

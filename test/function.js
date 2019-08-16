@@ -2,26 +2,22 @@
 
 const fs = require('fs')
 const path = require('path')
-const test = require('ava')
 const Taskr = require('taskr')
 
 const fixtures = path.resolve(__dirname, 'fixtures/*')
 const tmp = path.resolve(__dirname, '.tmp/function')
 
-test('taskr-filter w/ function', async (t) => {
+test('taskr-filter w/ function', async () => {
   const taskr = new Taskr({
-    plugins: [
-      require('../'),
-      require('@taskr/clear')
-    ],
+    plugins: [require('../'), require('@taskr/clear')],
     tasks: {
-      * filter(task) {
+      *filter(task) {
         yield task
           .source(fixtures)
           .filter((file) => file.base.indexOf('ba') === 0)
           .target(tmp)
       },
-      * clear(task) {
+      *clear(task) {
         yield task.clear(tmp)
       }
     }
@@ -29,11 +25,12 @@ test('taskr-filter w/ function', async (t) => {
 
   await taskr.start('filter')
 
-  const exists = (file) => fs.existsSync(path.resolve(tmp, file))
+  const exists = (file, shouldExist = true) =>
+    expect(fs.existsSync(path.resolve(tmp, file))).toBe(shouldExist)
 
-  t.false(exists('foo'))
-  t.true(exists('bar'))
-  t.true(exists('baz'))
+  exists('foo', false)
+  exists('bar')
+  exists('baz')
 
   await taskr.start('clear')
 })
