@@ -17,7 +17,7 @@
     "prepublish": "npm test",
     "test": "jest",
     "posttest": "rm -rf test/.tmp",
-    "release": "standard-version --sign"
+    "release": "standard-version --sign && git push --follow-tags"
   },
   "author": {
     "name": "Casey Webb",

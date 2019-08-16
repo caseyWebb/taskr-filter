@@ -1,24 +1,32 @@
 language: node_js
 node_js:
-  - lts/carbon
-  - lts/dubnium
-  - node
+- lts/carbon
+- lts/dubnium
+- node
 branches:
   only:
-    - master
+  - master
 env:
   matrix:
-    - TRAVIS=true
+  - TRAVIS=true
   global:
     secure: LHF20/U42BskU7ov0yH0PaOjOmVVP8kNwJTCVshOhEcJNJwTt1LvBSX7DxiIfxOntgLu0kZLIHjyPuESjeJYLP+1BlfACuXfg/CC2X9C1cbsoxbkF7vhpqIq7scEUW0h6d0OpxVzBzyjjYyxE14ct1KGVrylqnwrbAD5EsRPM3Byf5WFq1iMd2VWxvwn1KnluKm+7EklbsPC6X93ui7o8gDllwl55vZjw2a+JnymAoORbk5k07Vo4/5hRI4wLNEZ2hPD2FnWc30Tir/WrDU9/b/by+JLr8J+vTuAH13WdNRJ7oe1bggIahObEIj6D9RyjizO9EeUVNF7g64VbOK1aGWPYzGKCMojPadhs6rzkFoKCC6xWBMidfqKms3dkF0JE4GJVcKd0XO6AbGfdomK7TrQNh54jN4cpUhmEhGMAUS05qG9+hrCqiqVULm1A0TqFnZPzrm+jA7XLgxUk0CAYHfv17XgAdi9aeubmAD4vXAquSvPnbAiDQbH3B73k6Vk1V9fxiqu5NU83OPt8D0X+TiAhhEOIgMlCHpQr71NT3c0C1DbTFZvQmZ6LFdIz0hJwNVF+MJwnE4YUHGY0hjXbZndWfhksEtZuNlGmeEVlNrF9d6qEEfOpoeMxDDRuKO9GPk/A/lQSJXqommbhpMNBWGxlG2e5dK9liYt95UyOBI=
 cache:
   yarn: true
   directories:
-    - node_modules
+  - node_modules
 script:
-  - yarn lint
-  - yarn test
+- yarn lint
+- yarn test
 after_script:
-  - npx codecov
+- npx codecov
 notifications:
   email: false
+deploy:
+  provider: npm
+  email: notcaseywebb@gmail.com
+  api_key:
+    secure: hSWU44fYzrlWFrCEPtgVrMP6Pk4QuOoNl7vZtWvu7GoilFA00mYiG6DbQPjY3ju394k8usQLTUhkSvYl//vwgdAen6oNwlMzYiO6tae8+eidmOLn3TjfXfT5uFnD3zXZ+5JKIR1DTNgkdloJpbUiAMXg7KBa2exUVLdQhFpTnv/eR/AxUgLkyVjJQpjY63eEX0j4+eiYbmDCW6BSesIYjveZpS9sydNL2K1clBkPTrl9FkQ6qeIkXTxALCPwV17aXJYFOqiekgnqjn1RdycFzFd2zfZ/TDvCVhybxT8OSTG7b82pA/500QmO0bLxyXqreQVV0gm4YnQYkFMQjnZ8QmNkvjVQ1Kvzb2euiRM+zztxuCmk4FW9mqOFHfK0t9MYXLQ131KFn4q/8asrXlQrpr2HsP77/frbx3VvBRlMj5F91KLCM9AqQQB+yfzLa8uaMnyZj4FXdW/0+BIiWVFbhC/qYpPz4iaSZdJnSBiEK3BUw1bdXvrv74CoJ9LvA6b0tLbedBpmxJawC1qwsgciveHm/RMnVS5PONLWQU19mZZ7QOfMfkO5ibQ3nFKnTJiGAd4FGG8BSdm4MbmqlimrhPyt77idGWdiN8YFdFplwk/gZq5JB7mainggySxgwDO+BSheKAZ8PsKYWH+CVKWCQOVqKTpqgrwUwmjIZHcLN1s=
+  on:
+    tags: true
+    repo: caseyWebb/taskr-filter
