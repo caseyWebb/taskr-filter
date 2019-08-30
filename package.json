@@ -51,7 +51,8 @@
       "jest": true
     },
     "parserOptions": {
-      "sourceType": "script"
+      "sourceType": "script",
+      "project": "./tsconfig.json"
     },
     "rules": {
       "@typescript-eslint/no-var-requires": 0
