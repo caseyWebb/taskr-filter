@@ -29,8 +29,8 @@
   },
   "devDependencies": {
     "@taskr/clear": "^1.1.0",
-    "eslint": "^6.1.0",
-    "eslint-config-profiscience": "^5.0.2",
+    "eslint": "^8.5.0",
+    "eslint-config-profiscience": "^7.0.1",
     "jest": "^27.0.6",
     "prettier": "^1.18.2",
     "standard-version": "^9.0.0",
@@ -45,16 +45,22 @@
   },
   "eslintConfig": {
     "extends": [
-      "eslint-config-profiscience"
+      "profiscience"
     ],
     "env": {
-      "jest": true
+      "jest": true,
+      "node": true
     },
     "parserOptions": {
       "sourceType": "script",
       "project": "./tsconfig.json"
     },
     "rules": {
+      "@typescript-eslint/no-unsafe-argument": 0,
+      "@typescript-eslint/no-unsafe-assignment": 0,
+      "@typescript-eslint/no-unsafe-call": 0,
+      "@typescript-eslint/no-unsafe-member-access": 0,
+      "@typescript-eslint/no-unsafe-return": 0,
       "@typescript-eslint/no-var-requires": 0
     }
   },
